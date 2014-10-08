@@ -61,7 +61,7 @@ $data = json_decode($result);
 echo '<table border="1" width="900">';
 echo '<tbody>';
 
-		echo '<tr>';
+		echo '<tr bgcolor="white" bordercolor="green">';
         echo '<td align="center">Date </td>';
         echo '<td align="center">Sleep duration (h)</td>';
 		echo '<td align="center">Tags</td>';
@@ -78,7 +78,17 @@ foreach($data as $record)
 		echo '<tr>';
         echo '<td align="center">' . $record->date . '</td>';
         echo '<td align="center">' . round($record->properties->stage_duration_S/3600,2) . '</td>';
-		echo '<td align="center">' . $record->tags[0] . '</td>';
+		
+		
+		echo '<td align="center">';
+		
+		for ($i=0; $i<count($record->tags); $i++) 
+		{
+			echo $record->tags[$i] . " ";
+		}
+		echo '</td>';
+		
+		
 		if (isset($record->properties->sleep_latency)==true)
 		{
 			echo '<td align="center">' . $record->properties->sleep_latency/60 . '</td>';
