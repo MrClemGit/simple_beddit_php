@@ -137,15 +137,20 @@ foreach($data as $record)
 
 }
 echo '<tr bgcolor="#A9F5F2" bordercolor="green">';
-        echo '<td align="center">Sleep Duration Mean </td>';
+        echo '<td align="center">Number of Sleeps</td>';
+		echo '<td align="center">Sleep Duration Mean </td>';
         echo '<td align="center">Resting Heart Rate Mean</td>';
-		echo '<td align="center">Number of Sleeps</td>';
+		
 		echo '<td align="center">Sleep in Error (min)</td>';
 		echo '</tr>';
 echo '<tr>';
-echo '<td align="center">' . round($stage_duration_S_sum/$number_of_sleeps,2) . '</td>';
-echo '<td align="center">' . round($resting_heart_rate_sum/$number_of_sleeps,2) . '</td>';
 echo '<td align="center">' . $number_of_sleeps . '</td>';
+if ($number_of_sleeps != 0)
+{
+	echo '<td align="center">' . round($stage_duration_S_sum/$number_of_sleeps,2) . '</td>';
+	echo '<td align="center">' . round($resting_heart_rate_sum/$number_of_sleeps,2) . '</td>';
+}
+
 echo '<td align="center">' . $sleep_with_error . '</td>';
 echo '</tr>';
 
